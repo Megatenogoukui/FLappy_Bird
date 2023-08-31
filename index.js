@@ -61,6 +61,7 @@ window.onload = () => {
 
 
     document.addEventListener("keydown" ,moveBird);
+    document.addEventListener('click', moveBirdMobile)
 
     requestAnimationFrame(update);
     setInterval(placePipes , 1500);
@@ -147,7 +148,17 @@ function moveBird(e){
     }
     
 }
-
+function moveBirdMobile(){
+    velocityY = -6;
+        if(gameOver){
+                bird.y = birdY;
+            score = 0;
+            pipesArr = [];
+            gameOver = false;
+            requestAnimationFrame(update);
+            
+        }
+}
 function detectCollision(a , b){
     return ((a.x + a.width) > b.x && a.x < (b.x + b.width) && a.y < (b.y + b.height) && (a.y + a.height) > b.y)
 
